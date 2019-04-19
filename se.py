@@ -96,9 +96,16 @@ class UiMainWindow(QObject):
         self.merge_btn.setFlat(False)
         self.merge_btn.setObjectName("merge_btn")
 
+        # button to search sidebar
+        self.search_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.search_btn.setGeometry(QtCore.QRect(401, 125, 21, 199))
+        self.search_btn.setStyleSheet("background-color: rgb(190, 190, 190);\nfont: 12pt \"Candara Light\";")
+        self.search_btn.setFlat(True)
+        self.search_btn.setObjectName("search")
+
         # button to display sidebar
         self.show = QtWidgets.QPushButton(self.centralwidget)
-        self.show.setGeometry(QtCore.QRect(402, 123, 20, 401))
+        self.show.setGeometry(QtCore.QRect(401, 327, 21, 200))
         self.show.setStyleSheet("background-color: rgb(190, 190, 190);\nfont: 12pt \"Candara Light\";")
         self.show.setFlat(True)
         self.show.setObjectName("show")
@@ -119,9 +126,25 @@ class UiMainWindow(QObject):
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setObjectName("line_2")
 
+        # line b/w search and show button
+        self.button_mid_line = QtWidgets.QFrame(self.centralwidget)
+        self.button_mid_line.setGeometry(QtCore.QRect(400, 310, 21, 31))
+        self.button_mid_line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.button_mid_line.setLineWidth(1)
+        self.button_mid_line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.button_mid_line.setObjectName("button_mid")
+
+        # line beside show button
+        self.show_left_line = QtWidgets.QFrame(self.centralwidget)
+        self.show_left_line.setGeometry(QtCore.QRect(390, 127, 20, 395))
+        self.show_left_line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.show_left_line.setLineWidth(1)
+        self.show_left_line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.show_left_line.setObjectName("show_left_line")
+
         # please wait label
         self.verify_label = QtWidgets.QLabel(self.centralwidget)
-        self.verify_label.setGeometry(QtCore.QRect(120, 538, 171, 41))
+        self.verify_label.setGeometry(QtCore.QRect(1, 538, 421, 41))
         self.verify_label.setStyleSheet("font: 75 16pt \"Calibri\";")
         self.verify_label.setScaledContents(False)
         self.verify_label.setAlignment(QtCore.Qt.AlignCenter)
@@ -138,9 +161,12 @@ class UiMainWindow(QObject):
         size = QtCore.QSize(min(rect.width(), rect.height()), min(rect.width(), rect.height()))
         self.movie.setScaledSize(size)
 
-        self.verify_label.raise_()
-        self.line_1.raise_()
+        # order is important
         self.line_2.raise_()
+        self.line_1.raise_()
+        self.verify_label.raise_()
+        self.show_left_line.raise_()
+        self.button_mid_line.raise_()
         self.logo.raise_()
         self.title_label.raise_()
         self.seasgn_label.raise_()
@@ -151,6 +177,7 @@ class UiMainWindow(QObject):
         self.upload_btn.raise_()
         self.merge_btn.raise_()
         self.show.raise_()
+        self.search_btn.raise_()
 
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -172,7 +199,7 @@ class UiMainWindow(QObject):
         self.upload_btn.setText(_translate("MainWindow", "Upload to DB"))
         self.merge_btn.setText(_translate("MainWindow", "Merge Both Files"))
         self.verify_label.setText(_translate("MainWindow", "Please Wait"))
-        self.show.setText(_translate("MainWindow", ">>"))
+        # self.show.setText(_translate("MainWindow", ">>"))
 
 
 if __name__ == "__main__":

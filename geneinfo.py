@@ -27,6 +27,9 @@ class Ui_MainWindow1(object):
         MainWindow.setFixedSize(MainWindow.size())
         MainWindow.setWindowIcon(QtGui.QIcon('images\\icon.png'))
         self.textEdit.setReadOnly(True)
+
+        # self.textEdit.setLineWrapColumnOrWidth(100)
+        # self.textEdit.setLineWrapMode(QtWidgets.QTextEdit.FixedPixelWidth)
         # self.populate_tb(MainWindow)
 
     def retranslate_ui(self, MainWindow):
